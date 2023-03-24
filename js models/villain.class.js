@@ -1,0 +1,3 @@
+class villain extends moveableObject{
+
+}
