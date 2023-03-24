@@ -11,7 +11,7 @@ class moveableObject{
     };
 
     moveRight(){
-        console.log('moving right')
+        console.log('moving right');
     };
 
     moveLeft(){
