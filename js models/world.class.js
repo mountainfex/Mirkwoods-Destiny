@@ -39,7 +39,17 @@ class World {
         });
     }
 
-    addToMap(mo){
-        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
+    addToMap(mObj){
+        if (mObj.otherDirection) {
+            this.ctx.save();
+            this.ctx.translate(mObj.width,0);
+            this.ctx.scale(-1, 1)
+            mObj.x = mObj.x * -1
+        }
+        this.ctx.drawImage(mObj.img, mObj.x, mObj.y, mObj.width, mObj.height);
+        if (mObj.otherDirection) {
+            mObj.x = mObj.x * -1
+            this.ctx.restore();
+        }
     }
 }
