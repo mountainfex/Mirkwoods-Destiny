@@ -3,6 +3,7 @@ const level1 = new Level(
         new villain(),
         new villain(),
         new villain(),
+        new Endboss(),
     ],
 
     [
@@ -41,5 +42,5 @@ const level1 = new Level(
         new BackgroundObject('img/background/game_background_2/layers/ground_decor.png',6399.75, 0),
         new BackgroundObject('img/background/game_background_2/layers/back_decor.png',6399.75, 0),
         new BackgroundObject('img/background/game_background_2/layers/front_decor.png',6399.975, -225),
-    ]    
+    ],    
 );
