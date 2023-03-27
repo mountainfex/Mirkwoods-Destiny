@@ -1,4 +1,6 @@
 class character extends moveableObject{
+    speed = 5;
+
     WALKING_IMAGES = [
         'img/elb/3/walk/Elf_03__WALK_000.png',
         'img/elb/3/walk/Elf_03__WALK_001.png',
@@ -11,6 +13,7 @@ class character extends moveableObject{
         'img/elb/3/walk/Elf_03__WALK_008.png',
         'img/elb/3/walk/Elf_03__WALK_009.png'
     ];
+    world;
 
     constructor(){
         super().loadImg('img/elb/3/walk/Elf_03__WALK_000.png');
@@ -21,13 +24,26 @@ class character extends moveableObject{
     }
 
     animation(){
-        setInterval(()=> {
-            let i = this.currentImage % this.WALKING_IMAGES.length;       
-            let path = this.WALKING_IMAGES[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
-        },1000 / 30)
+        setInterval(() => {
+            //moving character and turning img
+            if(this.world.keyboard.RIGHT){
+                this.x += this.speed;
+                this.otherDirection = false;
+            }  
+            if(this.world.keyboard.LEFT){
+                this.x -= this.speed;
+                this.otherDirection = true;
+            }              
+        },1000 / 60);
 
+        setInterval(()=> {
+            if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
+                //walking animation
+                let i = this.currentImage % this.WALKING_IMAGES.length;       
+                let path = this.WALKING_IMAGES[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;}
+        },1000 / 30)
     };
 
     
