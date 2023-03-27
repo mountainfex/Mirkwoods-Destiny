@@ -1,5 +1,5 @@
 class moveableObject{
-    x = -50;
+    x = 0;
     y = 80;
     img;
     imageCache = [];
