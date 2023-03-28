@@ -2,6 +2,12 @@ class character extends moveableObject{
     speed = 18;
     y = -50;
 
+    frameX = 210;
+    frameY = 80;
+    frameWidth = -420;
+    frameHeight = -130;
+
+
     RUNNING_IMAGES = [
         'img/elb/3/run/Elf_03__RUN_000.png',
         'img/elb/3/run/Elf_03__RUN_001.png',
@@ -50,11 +56,7 @@ class character extends moveableObject{
 
         this.applyGravity();
         this.animation();
-        
-
-    }
-
-    
+    }    
 
     animation(){
         setInterval(() => {

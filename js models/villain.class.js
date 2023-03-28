@@ -2,6 +2,11 @@ class villain extends moveableObject{
     width = 562.5;
     height = 281.25;
     otherDirection = true;
+
+    frameX = 200;
+    frameY = 115;
+    frameWidth = -350;
+    frameHeight = -145;
     
 
     WALKING_IMAGES = [

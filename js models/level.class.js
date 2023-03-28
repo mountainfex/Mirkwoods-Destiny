@@ -1,10 +1,10 @@
 class Level {
-    enemies;
+    villain;
     backgroundObjects;
     level_end_x = 6399.975 ;
 
-    constructor(enemies, backgroundObjects){
-        this.enemies = enemies;
+    constructor(villain, backgroundObjects){
+        this.villain = villain;
         this.backgroundObjects = backgroundObjects;
     };
 }

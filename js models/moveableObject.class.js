@@ -10,6 +10,7 @@ class moveableObject{
     otherDirection = false;
     speedY = 0;
     acceleration = 2.5;
+    health = 100;
 
     applyGravity(){
         setInterval(()=>{
@@ -33,13 +34,39 @@ class moveableObject{
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
+    // drawFrame(ctx){
+    //     if (this instanceof character || this instanceof villain) {
+    //         ctx.beginPath();
+    //         ctx.lineWidth = '2';
+    //         ctx.strokeStyle = "blue";
+    //         ctx.rect(this.x, this.y, this.width, this.height);
+    //         ctx.stroke();
+    //     };
+    // };
+
+    // isColliding (obj) {
+    //     return  (this.X + this.width) >= obj.X && this.X <= (obj.X + obj.width) && 
+    //             (this.Y + this.offsetY + this.height) >= obj.Y &&
+    //             (this.Y + this.offsetY) <= (obj.Y + obj.height) && 
+    //             obj.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
+    // };
+
     drawFrame(ctx){
-        ctx.beginPath();
-        ctx.lineWidth = '2';
-        ctx.strokeStyle = "blue";
-        ctx.rect(this.x, this.y, this.width, this.height);
-        ctx.stroke();
-    }
+        if (this instanceof character || this instanceof villain) {
+            ctx.beginPath();
+            ctx.lineWidth = '2';
+            ctx.strokeStyle = "blue";
+            ctx.rect(this.x + this.frameX, this.y + this.frameY, this.width + this.frameWidth, this.height + this.frameHeight);
+            ctx.stroke();
+        };
+    };
+
+    isColliding(obj) {
+        return  ((this.x + this.frameX) + (this.width + this.frameWidth)) >= (obj.x + obj.frameX) && (this.x + this.frameX) <= ((obj.x + obj.frameX) + (obj.width + obj.frameWidth)) && 
+                ((this.y + this.frameY) + this.offsetY + (this.height + this.frameHeight)) >= (obj.y + obj.frameY) &&
+                ((this.y + this.frameY) + this.offsetY) <= ((obj.y + obj.frameY) + (obj.height + obj.frameHeight)) && 
+                obj.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.;
+    };
 
     loadImages(arr){
         arr.forEach((path) => {
@@ -48,7 +75,7 @@ class moveableObject{
             this.imageCache[path] = img;
         });
 
-    }
+    };
 
     objectAnimation(images) {
         let i = this.currentImage % images.length;
