@@ -24,6 +24,8 @@ class World {
             this.level.villain.forEach((villain) => {
                 if (this.char.isColliding(villain)) {
                     console.log('collision with', villain);
+                    this.char.health -= 5;
+                    console.log('collision with ', this.char.health);
                 }
             })
         }, 1000);
