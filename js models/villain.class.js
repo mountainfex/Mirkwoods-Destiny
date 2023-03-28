@@ -5,8 +5,8 @@ class villain extends moveableObject{
 
     frameX = 200;
     frameY = 115;
-    frameWidth = -350;
-    frameHeight = -145;
+    frameW = -350;
+    frameH = -145;
     
 
     WALKING_IMAGES = [

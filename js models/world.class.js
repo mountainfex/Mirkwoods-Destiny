@@ -23,7 +23,7 @@ class World {
         setInterval(() => {
             this.level.villain.forEach((villain) => {
                 if (this.char.isColliding(villain)) {
-                    console.log(villain);
+                    console.log('collision with', villain);
                 }
             })
         }, 1000);

@@ -56,16 +56,20 @@ class moveableObject{
             ctx.beginPath();
             ctx.lineWidth = '2';
             ctx.strokeStyle = "blue";
-            ctx.rect(this.x + this.frameX, this.y + this.frameY, this.width + this.frameWidth, this.height + this.frameHeight);
+            ctx.rect(this.x + this.frameX, this.y + this.frameY, this.width + this.frameW, this.height + this.frameH);
             ctx.stroke();
         };
     };
 
     isColliding(obj) {
-        return  ((this.x + this.frameX) + (this.width + this.frameWidth)) >= (obj.x + obj.frameX) && (this.x + this.frameX) <= ((obj.x + obj.frameX) + (obj.width + obj.frameWidth)) && 
-                ((this.y + this.frameY) + this.offsetY + (this.height + this.frameHeight)) >= (obj.y + obj.frameY) &&
-                ((this.y + this.frameY) + this.offsetY) <= ((obj.y + obj.frameY) + (obj.height + obj.frameHeight)) && 
-                obj.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.;
+        return  ((this.x + this.frameX) + (this.width + this.frameW)) >= (obj.x + obj.frameX) && 
+                (this.x + this.frameX) <= (obj.x + obj.frameX) && 
+                ((this.y + this.frameY) + (this.height + this.frameH)) >= (obj.y + obj.frameY) && 
+                (this.y + this.frameY) <= ((obj.y + obj.frameY) + (obj.height + obj.frameH))
+                // ((this.x + this.frameX) + (this.width + this.frameWidth)) >= (obj.x + obj.frameX) && (this.x + this.frameX) <= ((obj.x + obj.frameX) + (obj.width + obj.frameWidth)) && 
+                // ((this.y + this.frameY) + this.offsetY + (this.height + this.frameHeight)) >= (obj.y + obj.frameY) &&
+                // ((this.y + this.frameY) + this.offsetY) <= ((obj.y + obj.frameY) + (obj.height + obj.frameHeight)) && 
+                // obj.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.;
     };
 
     loadImages(arr){
@@ -74,7 +78,6 @@ class moveableObject{
             img.src = path;
             this.imageCache[path] = img;
         });
-
     };
 
     objectAnimation(images) {

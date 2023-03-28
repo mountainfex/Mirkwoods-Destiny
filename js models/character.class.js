@@ -4,8 +4,8 @@ class character extends moveableObject{
 
     frameX = 210;
     frameY = 80;
-    frameWidth = -420;
-    frameHeight = -130;
+    frameW = -420;
+    frameH = -130;
 
 
     RUNNING_IMAGES = [
