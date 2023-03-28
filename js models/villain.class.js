@@ -1,6 +1,8 @@
 class villain extends moveableObject{
     width = 562.5;
     height = 281.25;
+    otherDirection = true;
+    
 
     WALKING_IMAGES = [
         'img/ORK/3_ORK/walk/ORK_03_WALK_001.png',
@@ -26,14 +28,13 @@ class villain extends moveableObject{
     };
 
     animation(){
-        this.moveLeft();
+        setInterval(() => {
+            this.moveLeft();
+        }, 1000 / 60);
+
         setInterval(()=> {
-            let i = this.currentImage % this.WALKING_IMAGES.length;   
-            this.otherDirection = true;   
-            let path = this.WALKING_IMAGES[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
-        },1000 / 30)
+            this.objectAnimation(this.WALKING_IMAGES);
+        },1000 / 30);
     };
 
 }

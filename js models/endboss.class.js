@@ -2,6 +2,7 @@ class Endboss extends moveableObject{
     width = 1125;
     height = 562.5;
     y = -100;
+    otherDirection = true;
 
 
     WALKING_IMAGES = [
@@ -29,11 +30,7 @@ class Endboss extends moveableObject{
     animation(){
         this.moveLeft();
         setInterval(()=> {
-            let i = this.currentImage % this.WALKING_IMAGES.length;   
-            this.otherDirection = true;   
-            let path = this.WALKING_IMAGES[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.objectAnimation(this.WALKING_IMAGES);
         },1000 / 30)
     };
 
