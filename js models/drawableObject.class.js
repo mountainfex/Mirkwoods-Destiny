@@ -3,7 +3,7 @@ class DrawableObject {
     imageCache = [];
     currentImage = 0;
     x = 0;
-    y = 80;
+    y = 115;
     width = 562.5;
     height = 295.3125;
 
@@ -28,7 +28,7 @@ class DrawableObject {
         if (this instanceof character || this instanceof villain) {
             ctx.beginPath();
             ctx.lineWidth = '2';
-            ctx.strokeStyle = "blue";
+            ctx.strokeStyle = "black";
             ctx.rect(this.x + this.frameX, this.y + this.frameY, this.width + this.frameW, this.height + this.frameH);
             ctx.stroke();
         };

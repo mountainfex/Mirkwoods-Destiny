@@ -1,6 +1,6 @@
 class character extends moveableObject{
     speed = 18;
-    y = 10;
+    y = 30;
 
     frameX = 210;
     frameY = 80;

@@ -27,6 +27,11 @@ class World {
                     console.log('collision with', villain);
                     this.char.hit();
                     console.log('collision with ', this.char.health);
+                    this.statusBar.setPercentage(this.char.health);
+                }
+                if (villain.isColliding(this.char)) {
+                    villain.hit(this.elf);
+                    console.log('villain-HP',villain.health);
                 }
             })
         }, 1000);
@@ -34,10 +39,16 @@ class World {
 
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.ctx.translate(this.camera_x, 0);
+        this.addObjectsToMap(this.level.backgroundObjects);
+
+        this.ctx.translate(-this.camera_x, 0)
+        // <<-----Space for fixed objects ----->>
+        this.addToMap(this.statusBar);
         this.ctx.translate(this.camera_x, 0);
 
-        this.addObjectsToMap(this.level.backgroundObjects);
-        this.addToMap(this.statusBar);
+
         this.addToMap(this.char);
         this.addObjectsToMap(this.level.villain);
         

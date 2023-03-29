@@ -16,7 +16,7 @@ class moveableObject extends DrawableObject{
     }
 
     isAboveGround(){
-        return this.y < 180;
+        return this.y < 120;
     }
 
     isColliding(obj) {

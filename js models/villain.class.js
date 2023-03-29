@@ -7,6 +7,7 @@ class villain extends moveableObject{
     frameY = 115;
     frameW = -350;
     frameH = -145;
+    health = 15;
     
 
     WALKING_IMAGES = [
@@ -21,12 +22,14 @@ class villain extends moveableObject{
         'img/ORK/3_ORK/walk/ORK_03_WALK_009.png'
     ];
 
+    DEAD_IMAGES = []
+
     constructor(){
         super().loadImg('img/ORK/3_ORK/walk/ORK_03_WALK_000.png');
         this.loadImages(this.WALKING_IMAGES);
 
         this.x = 200 + Math.random() * 500;
-        this.y = 80 + Math.random() * 100; 
+        // this.y = 80 + Math.random() * 100; 
         this.speed = 1 + Math.random() * 0.5;
 
         this.animation();
