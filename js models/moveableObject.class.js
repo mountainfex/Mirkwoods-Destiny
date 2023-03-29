@@ -12,6 +12,8 @@ class moveableObject{
     acceleration = 2.5;
     health = 100;
 
+    lastHit = 0;
+
     applyGravity(){
         setInterval(()=>{
             if (this.isAboveGround() || this.speedY > 0) {
@@ -76,11 +78,19 @@ class moveableObject{
         this.health -= 5; //damage
         if (this.health < 0) {
             this.health = 0;
+        } else {
+            this.lastHit = new Date().getTime();
         }
     }
 
     isDead(){
         return this.health == 0;
+    } 
+
+    isHurt(){
+        let timepassed = new Date().getTime() - this.lastHit;
+        timepassed = timepassed / 1000;
+        return timepassed < 1;
     }
 
     loadImages(arr){
