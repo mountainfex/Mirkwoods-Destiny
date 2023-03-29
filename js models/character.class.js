@@ -1,12 +1,25 @@
 class character extends moveableObject{
     speed = 18;
-    y = -50;
+    y = 10;
 
     frameX = 210;
     frameY = 80;
     frameW = -420;
     frameH = -130;
 
+
+    IDLE_IMAGES = [
+        'img/elb/3/idle/Elf_03__IDLE_000.png',
+        'img/elb/3/idle/Elf_03__IDLE_001.png',
+        'img/elb/3/idle/Elf_03__IDLE_002.png',
+        'img/elb/3/idle/Elf_03__IDLE_003.png',
+        'img/elb/3/idle/Elf_03__IDLE_004.png',
+        'img/elb/3/idle/Elf_03__IDLE_005.png',
+        'img/elb/3/idle/Elf_03__IDLE_006.png',
+        'img/elb/3/idle/Elf_03__IDLE_007.png',
+        'img/elb/3/idle/Elf_03__IDLE_008.png',
+        'img/elb/3/idle/Elf_03__IDLE_009.png'
+    ];
 
     RUNNING_IMAGES = [
         'img/elb/3/run/Elf_03__RUN_000.png',
@@ -32,20 +45,33 @@ class character extends moveableObject{
         'img/elb/3/jump/Elf_03__JUMP_007.png',
         'img/elb/3/jump/Elf_03__JUMP_008.png',
         'img/elb/3/jump/Elf_03__JUMP_009.png'
-    ]
+    ];
 
-    IDLE_IMAGES = [
-        'img/elb/3/idle/Elf_03__IDLE_000.png',
-        'img/elb/3/idle/Elf_03__IDLE_001.png',
-        'img/elb/3/idle/Elf_03__IDLE_002.png',
-        'img/elb/3/idle/Elf_03__IDLE_003.png',
-        'img/elb/3/idle/Elf_03__IDLE_004.png',
-        'img/elb/3/idle/Elf_03__IDLE_005.png',
-        'img/elb/3/idle/Elf_03__IDLE_006.png',
-        'img/elb/3/idle/Elf_03__IDLE_007.png',
-        'img/elb/3/idle/Elf_03__IDLE_008.png',
-        'img/elb/3/idle/Elf_03__IDLE_009.png'
-    ]
+    DEAD_IMAGES = [
+        'img/elb/3/die/Elf_03__DIE_001.png',
+        'img/elb/3/die/Elf_03__DIE_002.png',
+        'img/elb/3/die/Elf_03__DIE_003.png',
+        'img/elb/3/die/Elf_03__DIE_004.png',
+        'img/elb/3/die/Elf_03__DIE_005.png',
+        'img/elb/3/die/Elf_03__DIE_006.png',
+        'img/elb/3/die/Elf_03__DIE_007.png',
+        'img/elb/3/die/Elf_03__DIE_008.png',
+        'img/elb/3/die/Elf_03__DIE_009.png'
+    ];
+
+    HURT_IMAGES = [
+        'img/elb/3/hurt/Elf_03__HURT_001.png',
+        'img/elb/3/hurt/Elf_03__HURT_002.png',
+        'img/elb/3/hurt/Elf_03__HURT_003.png',
+        'img/elb/3/hurt/Elf_03__HURT_004.png',
+        'img/elb/3/hurt/Elf_03__HURT_005.png',
+        'img/elb/3/hurt/Elf_03__HURT_006.png',
+        'img/elb/3/hurt/Elf_03__HURT_007.png',
+        'img/elb/3/hurt/Elf_03__HURT_008.png',
+        'img/elb/3/hurt/Elf_03__HURT_009.png'
+    ];
+
+
     world;
 
     constructor(){
@@ -53,6 +79,8 @@ class character extends moveableObject{
         this.loadImages(this.IDLE_IMAGES);
         this.loadImages(this.RUNNING_IMAGES);
         this.loadImages(this.JUMPING_IMAGES);
+        this.loadImages(this.DEAD_IMAGES);
+        this.loadImages(this.HURT_IMAGES);
 
         this.applyGravity();
         this.animation();
@@ -80,14 +108,20 @@ class character extends moveableObject{
         setInterval(()=> {
             this.objectAnimation(this.IDLE_IMAGES);
 
-            if (this.isAboveGround()) {
-                this.objectAnimation(this.JUMPING_IMAGES)
-            } else {
-
-                if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
-                    //walking animation
-                    this.objectAnimation(this.RUNNING_IMAGES)}
-            };
-        },1000 / 30);
+            if (this.isDead()) {
+                this.objectAnimation(this.DEAD_IMAGES);
+            } else 
+                if (this.isHurt()) {
+                    this.objectAnimation(this.HURT_IMAGES);
+                } else 
+                    if (this.isAboveGround()) {
+                        this.objectAnimation(this.JUMPING_IMAGES);
+                    } else {
+                        if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
+                            //walking animation
+                            this.objectAnimation(this.RUNNING_IMAGES);
+                        }
+                    }
+            },1000 / 30);
     };
 }
