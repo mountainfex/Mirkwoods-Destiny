@@ -5,10 +5,6 @@ let keyboard = new Keyboard;
 function init(){
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-
-
-    console.log('My Character is', world.char);
-
 }
 
 window.addEventListener('keydown', (e) => {
@@ -34,7 +30,6 @@ window.addEventListener('keydown', (e) => {
     if(e.keyCode == 13){
         keyboard.ENTER = true;
     }
-    console.log(e);
 })
 
 window.addEventListener('keyup', (e) => {
@@ -60,5 +55,4 @@ window.addEventListener('keyup', (e) => {
     if(e.keyCode == 13){
         keyboard.ENTER = false;
     }
-    console.log(e);
 })

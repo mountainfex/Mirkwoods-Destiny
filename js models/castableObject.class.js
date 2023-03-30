@@ -31,10 +31,7 @@ class castableObject extends moveableObject {
         'img/Firecast/26.png',
         'img/Firecast/27.png',
         'img/Firecast/28.png',
-        'img/Firecast/29.png'
-    ];
-
-    CAST_END_IMAGES = [
+        'img/Firecast/29.png',
         'img/Firecast/30.png',
         'img/Firecast/31.png',
         'img/Firecast/32.png',
@@ -46,26 +43,39 @@ class castableObject extends moveableObject {
         'img/Firecast/38.png',
         'img/Firecast/39.png'
     ];
+
+    damage = 30;
     
-    constructor(){
+    constructor(x,y){
         super().loadImg('img/Firecast/1.png');
-        this.x = 100;
-        this.y = 100;
+        this.loadImages(this.CAST_START_IMAGES);
+        this.loadImages(this.CAST_DURATION_IMAGES);
+
+        this.x = x + 200;
+        this.y = y + 45;
         this.height = 250;
         this.width = 250;
-        this.cast(100, 150);
+        this.speed = 20;
+        this.animation();
     };
 
 
-    cast(x,y) {
-        this.x = x;
-        this.y = y;
-        this.speedX = 30;
-        setInterval(() => {
-           this.x += 10;
-           this.objectAnimation(this.CAST_START_IMAGES);
-           this.objectAnimation(this.CAST_DURATION_IMAGES);
-           this.objectAnimation(this.CAST_END_IMAGES);
-        }, 25);
-    };
+    animation(){
+        let fireballLoad = setInterval(() => {
+            this.objectAnimation(this.CAST_START_IMAGES);
+        }, 1000 / 20);
+        setTimeout(() => {
+            clearInterval(fireballLoad)
+            let fireball = setInterval(() => {
+                this.objectAnimation(this.CAST_DURATION_IMAGES);
+            }, 1000 / 20);
+            let fireballMove = setInterval(() => {
+                this.moveRight();
+            }, 1000 / 20);
+            setTimeout(() => {
+                clearInterval(fireball);
+                clearInterval(fireballMove);
+            }, 1399);
+        }, 400);
+    }
 }

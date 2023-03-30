@@ -6,7 +6,7 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new StatusBar();
-    fireball = [new castableObject()];
+    fireball = [];
 
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
@@ -25,7 +25,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkCast();
-        }, 1000);
+        }, 100);
     }
 
     checkCast(){
