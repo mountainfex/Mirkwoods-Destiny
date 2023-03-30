@@ -1,8 +1,9 @@
 class Endboss extends moveableObject{
     width = 1125;
     height = 562.5;
-    y = -100;
+    y = -135;
     otherDirection = true;
+    health = 50;
     damage = 5;
 
 
@@ -52,7 +53,7 @@ class Endboss extends moveableObject{
         this.loadImages(this.DEAD_IMAGES);
         this.loadImages(this.ATTACK_IMAGES);
 
-        this.x = 700;
+        this.x = 2800;
         this.animation();
     }
 

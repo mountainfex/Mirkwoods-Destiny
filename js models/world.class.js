@@ -26,12 +26,12 @@ class World {
                 if (this.char.isColliding(villain)) {
                     console.log('collision with', villain);
                     this.char.hit();
-                    console.log('collision with ', this.char.health);
+                    // console.log('collision with ', this.char.health);
                     this.statusBar.setPercentage(this.char.health);
                 }
                 if (villain.isColliding(this.char)) {
-                    villain.hit(this.elf);
-                    console.log('villain-HP',villain.health);
+                    villain.hit(this.char);
+                    // console.log('villain-HP',villain.health);
                 }
             })
         }, 1000);
