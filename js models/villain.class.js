@@ -8,6 +8,15 @@ class villain extends moveableObject{
     frameW = -350;
     frameH = -145;
     health = 10;
+    damage = 5;
+
+    offset = {
+        top: 115,
+        right: 210,
+        bottom: 30,
+        left: 150
+    };
+
     
 
     WALKING_IMAGES = [
@@ -49,13 +58,15 @@ class villain extends moveableObject{
     };
 
     animation(){
-        setInterval(() => {
+        let movingInterval = setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
 
-        setInterval(()=> {
+        let animationInterval = setInterval(()=> {
             if (this.isDead()) {
-                this.objectAnimation(this.DEAD_IMAGES);
+                clearInterval(animationInterval);
+                clearInterval(movingInterval);
+                this.die();
             } else 
                 this.objectAnimation(this.WALKING_IMAGES);
         },1000 / 30);

@@ -3,8 +3,15 @@ class Endboss extends moveableObject{
     height = 562.5;
     y = -135;
     otherDirection = true;
-    health = 50;
+    health = 20;
     damage = 5;
+
+    offset = {
+        top: 200,
+        right: 330,
+        bottom: 50,
+        left: 250
+    };
 
 
     WALKING_IMAGES = [
@@ -68,7 +75,7 @@ class Endboss extends moveableObject{
                 this.moveLeft();
                 let animationWalkInterval = setInterval(() => {
                     this.objectAnimation(this.WALKING_IMAGES);
-                }, 1000/30);
+                }, 1000 / 30);
                 setTimeout(() => {
                     clearInterval(moveInterval);
                     clearInterval(animationWalkInterval);

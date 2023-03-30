@@ -6,6 +6,7 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new StatusBar();
+    fireball = [new castableObject()];
 
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
@@ -13,19 +14,33 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollisions();
+        this.run();
     }
 
     setWorld(){
         this.char.world = this;
     };
 
+    run(){
+        setInterval(() => {
+            this.checkCollisions();
+            this.checkCast();
+        }, 1000);
+    }
+
+    checkCast(){
+        if (this.keyboard.ENTER) {
+            let cast = new castableObject(this.char.x, this.char.y);
+            this.fireball.push(cast);
+        }
+    }
+
     checkCollisions() {
         setInterval(() => {
             this.level.villain.forEach((villain) => {
                 if (this.char.isColliding(villain)) {
                     console.log('collision with', villain);
-                    this.char.hit();
+                    this.char.hit(villain);
                     // console.log('collision with ', this.char.health);
                     this.statusBar.setPercentage(this.char.health);
                 }
@@ -51,6 +66,7 @@ class World {
 
         this.addToMap(this.char);
         this.addObjectsToMap(this.level.villain);
+        this.addObjectsToMap(this.fireball);
         
         this.ctx.translate(-this.camera_x, 0);
 

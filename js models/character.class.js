@@ -6,7 +6,14 @@ class character extends moveableObject{
     frameY = 80;
     frameW = -420;
     frameH = -130;
+    damage = 10;
 
+    offset = {
+        top: 93,
+        right: 220,
+        bottom: 50,
+        left: 220
+    };
 
     IDLE_IMAGES = [
         'img/elb/3/idle/Elf_03__IDLE_000.png',
@@ -105,13 +112,14 @@ class character extends moveableObject{
             this.world.camera_x = -this.x - 125;             
         },1000 / 30);
 
-        setInterval(()=> {
+        let animationInterval = setInterval(()=> {
             this.objectAnimation(this.IDLE_IMAGES);
 
             if (this.isDead()) {
-                this.objectAnimation(this.DEAD_IMAGES);
+                clearInterval(animationInterval);
+                this.die();
             } else 
-                if (this.isHurt()) {
+                if (this.isHurt() && this.lastDamage != 0) {
                     this.objectAnimation(this.HURT_IMAGES);
                 } else 
                     if (this.isAboveGround()) {

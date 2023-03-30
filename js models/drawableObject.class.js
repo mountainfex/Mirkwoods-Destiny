@@ -29,7 +29,13 @@ class DrawableObject {
             ctx.beginPath();
             ctx.lineWidth = '2';
             ctx.strokeStyle = "black";
-            ctx.rect(this.x + this.frameX, this.y + this.frameY, this.width + this.frameW, this.height + this.frameH);
+            let drawX;
+            if (this.otherDirection) {
+                drawX = this.x + this.offset.right;
+            } else {
+                drawX = this.x + this.offset.left;
+            }
+            ctx.rect(drawX, (this.y + this.offset.top), ((this.width - this.offset.right) - this.offset.left), ((this.height - this.offset.top) - this.offset.bottom));
             ctx.stroke();
         };
     };
