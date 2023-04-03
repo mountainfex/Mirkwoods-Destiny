@@ -115,6 +115,7 @@ class World {
 
         this.addToMap(this.char);
         this.addObjectsToMap(this.level.villain);
+        this.addObjectsToMap(this.level.endboss);
         this.addObjectsToMap(this.fireball);
         this.addObjectsToMap(this.level.potion);
         
@@ -135,8 +136,7 @@ class World {
             this.flipImage(mObj)
         }
         mObj.draw(this.ctx);
-        mObj.drawFrame(this.ctx);
-
+        // mObj.drawFrame(this.ctx);
         if (mObj.otherDirection) {
             this.flipImageBack(mObj);
         }

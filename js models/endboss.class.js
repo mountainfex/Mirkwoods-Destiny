@@ -51,7 +51,6 @@ class Endboss extends moveableObject{
         'img/ORK_Endboss/2_ORK/ORK_02_ATTAK_007.png',
         'img/ORK_Endboss/2_ORK/ORK_02_ATTAK_008.png',
         'img/ORK_Endboss/2_ORK/ORK_02_ATTAK_009.png'
-
     ];
 
     constructor(){
@@ -60,7 +59,7 @@ class Endboss extends moveableObject{
         this.loadImages(this.DEAD_IMAGES);
         this.loadImages(this.ATTACK_IMAGES);
 
-        this.x = 2800;
+        this.x = 4000;
         this.animation();
     }
 
