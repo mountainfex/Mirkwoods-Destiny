@@ -13,7 +13,7 @@ class manabar extends DrawableObject{
         'img/MANA_BAR/Mana_bar_100.png'
     ]; 
 
-    percentage = 100;
+    percentage = 20;
 
     constructor(){
         super();
@@ -22,7 +22,7 @@ class manabar extends DrawableObject{
         this.y = 35;
         this.width = 300;
         this.height = 30;
-        this.setPercentage(100);
+        this.setPercentage(this.percentage);
     }
 
     setPercentage(percentage){

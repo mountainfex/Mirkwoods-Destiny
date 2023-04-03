@@ -7,6 +7,7 @@ class character extends moveableObject{
     frameW = -420;
     frameH = -130;
     damage = 10;
+    mana = 20;
 
     offset = {
         top: 93,
@@ -130,4 +131,11 @@ class character extends moveableObject{
                     }
             },1000 / 30);
     };
+
+    collect(mana) {
+        this.mana += mana;
+        if (this.mana > 100) {
+            this.mana = 100;
+        }
+    }
 }

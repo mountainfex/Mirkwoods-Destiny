@@ -50,7 +50,7 @@ class villain extends moveableObject{
         this.loadImages(this.WALKING_IMAGES);
         this.loadImages(this.DEAD_IMAGES);
 
-        this.x = 200 + Math.random() * 500;
+        this.x = 600 + Math.random() * 5000;
         // this.y = 80 + Math.random() * 100; 
         this.speed = 1 + Math.random() * 0.5;
 

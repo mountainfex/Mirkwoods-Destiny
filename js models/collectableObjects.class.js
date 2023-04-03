@@ -13,6 +13,7 @@ class CollectableObjects extends DrawableObject {
         this.x = Math.random() * 6300;
         this.y = 50 + Math.random() * 100;
     }
+    
     collect() {
         this.mana = 0;
     }

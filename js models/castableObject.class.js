@@ -44,6 +44,7 @@ class castableObject extends moveableObject {
         'img/Firecast/39.png'
     ];
 
+    health = 10;
     damage = 30;
     
     constructor(x,y){
@@ -68,6 +69,10 @@ class castableObject extends moveableObject {
             clearInterval(fireballLoad)
             let fireball = setInterval(() => {
                 this.objectAnimation(this.CAST_DURATION_IMAGES);
+                if (this.isDead()) {
+                    clearInterval(fireball);
+                    this.damage = 0;
+                }
             }, 1000 / 20);
             let fireballMove = setInterval(() => {
                 this.moveRight();

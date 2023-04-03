@@ -30,27 +30,74 @@ class World {
     }
 
     checkCast(){
-        if (this.keyboard.ENTER) {
-            let cast = new castableObject(this.char.x, this.char.y);
-            this.fireball.push(cast);
+        if (this.keyboard.ENTER && this.char.mana > 15 && !this.cooldown()) {
+            let attack = new castableObject(this.char.x, this.char.y);
+            this.fireball.push(attack);
+            this.char.mana -= 20;
+            this.manaBar.setPercentage(this.char.mana);
+            this.lastAttack = new Date().getTime();
+            setTimeout(() => {
+                this.fireball.splice(-1)
+            }, 1800);
         }
     }
 
+    cooldown() {
+        let timePassed = new Date().getTime() - this.lastAttack;
+        timePassed = timePassed / 1000;
+        return timePassed < 0.5;
+    }
+
     checkCollisions() {
-        setInterval(() => {
-            this.level.villain.forEach((villain) => {
-                if (this.char.isColliding(villain)) {
-                    console.log('collision with', villain);
-                    this.char.hit(villain);
-                    // console.log('collision with ', this.char.health);
-                    this.statusBar.setPercentage(this.char.health);
+        this.collisionVillain();
+        this.collisionEndboss();
+        this.collisionPotion();
+    }
+
+    collisionVillain(){
+        this.level.villain.forEach((villain) => {
+            if (this.char.isColliding(villain)) {
+                console.log('collision with', villain);
+                this.char.hit(villain);
+                // console.log('collision with ', this.char.health);
+                this.statusBar.setPercentage(this.char.health);
+            }
+            this.fireball.forEach((castableObject) => {
+                if (villain.isColliding(castableObject)) {
+                    villain.hit(castableObject);
+                    castableObject.hit(villain);
                 }
-                if (villain.isColliding(this.char)) {
-                    villain.hit(this.char);
-                    // console.log('villain-HP',villain.health);
+            });
+        });
+    }
+
+    collisionEndboss (){
+        this.level.endboss.forEach((endboss) => {
+            if (this.char.isColliding(endboss)) {
+                console.log('Endboss collision with', endboss);
+                this.char.hit(endboss);
+                // console.log('collision with ', this.char.health);
+                this.statusBar.setPercentage(this.char.health);
+            }
+            this.fireball.forEach((castableObject) => {
+                if (endboss.isColliding(castableObject)) {
+                    endboss.hit(castableObject);
+                    castableObject.hit(endboss);
                 }
-            })
-        }, 1000);
+            });
+        });
+    }
+
+    collisionPotion(){
+        this.level.potion.forEach((potion) => {
+            if (this.char.isColliding(potion)) {
+                this.char.collect(potion.mana)
+                potion.collect();
+                this.level.potion.splice(this.level.potion.indexOf(potion), 1);
+                this.manaBar.setPercentage(this.char.mana);
+                // this.increasePoints(900);
+            }
+        })
     }
 
     draw(){
