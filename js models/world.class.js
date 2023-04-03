@@ -16,7 +16,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-    }
+    };
 
     setWorld(){
         this.char.world = this;
@@ -69,6 +69,7 @@ class World {
         this.addToMap(this.char);
         this.addObjectsToMap(this.level.villain);
         this.addObjectsToMap(this.fireball);
+        this.addObjectsToMap(this.level.potion);
         
         this.ctx.translate(-this.camera_x, 0);
 
