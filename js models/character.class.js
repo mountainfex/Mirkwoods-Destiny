@@ -77,8 +77,6 @@ class character extends moveableObject{
         'img/elb/3/hurt/Elf_03__HURT_008.png',
         'img/elb/3/hurt/Elf_03__HURT_009.png'
     ];
-
-
     world;
 
     constructor(){
