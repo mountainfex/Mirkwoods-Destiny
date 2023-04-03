@@ -54,5 +54,18 @@ const level1 = new Level(
         new Potion(),
         new Potion(),
         new Potion(),
+        new Potion(),
+        new Potion(),
+        new Potion(),
+        new Potion(),
+        new Potion(),
+        new Potion(),
+        new Potion(),
+        new Potion(),
+        new Potion(),
+        new Potion(),
+        new Potion(),
+        new Potion(),
+        
     ],
 );
