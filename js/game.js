@@ -30,6 +30,9 @@ window.addEventListener('keydown', (e) => {
     if(e.keyCode == 13){
         keyboard.ENTER = true;
     }
+    if(e.keyCode == 16){
+        keyboard.SHIFT = true;
+    }
 })
 
 window.addEventListener('keyup', (e) => {
@@ -54,5 +57,8 @@ window.addEventListener('keyup', (e) => {
     }
     if(e.keyCode == 13){
         keyboard.ENTER = false;
+    }
+    if(e.keyCode == 16){
+        keyboard.SHIFT = false;
     }
 })

@@ -7,7 +7,11 @@ class World {
     camera_x = 0;
     statusBar = new StatusBar();
     manaBar = new manabar();
-    fireball = [];
+    castableObject = [];
+    points = 0;
+    score = 0;
+    lastAttack = 0;
+    endboss;
 
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
@@ -30,15 +34,33 @@ class World {
     }
 
     checkCast(){
+        this.fireCast();
+        this.flashCast();
+    }
+
+    fireCast(){
         if (this.keyboard.ENTER && this.char.mana > 15 && !this.cooldown()) {
-            let attack = new castableObject(this.char.x, this.char.y);
-            this.fireball.push(attack);
+            let attack = new Fireball(this.char.x, this.char.y);
+            this.castableObject.push(attack);
             this.char.mana -= 20;
             this.manaBar.setPercentage(this.char.mana);
             this.lastAttack = new Date().getTime();
             setTimeout(() => {
-                this.fireball.splice(-1)
+                this.castableObject.splice(-1)
             }, 1800);
+        }
+    }
+
+    flashCast(){
+        if (this.keyboard.SHIFT && this.char.mana >= 5 && !this.cooldown()) {
+            let attack = new Flash(this.char.x, this.char.y);
+            this.castableObject.push(attack);
+            this.char.mana -= 5;
+            this.manaBar.setPercentage(this.char.mana);
+            this.lastAttack = new Date().getTime();
+            setTimeout(() => {
+                this.castableObject.splice(-1)
+            }, 1000);
         }
     }
 
@@ -62,7 +84,7 @@ class World {
                 // console.log('collision with ', this.char.health);
                 this.statusBar.setPercentage(this.char.health);
             }
-            this.fireball.forEach((castableObject) => {
+            this.castableObject.forEach((castableObject) => {
                 if (villain.isColliding(castableObject)) {
                     villain.hit(castableObject);
                     castableObject.hit(villain);
@@ -79,7 +101,7 @@ class World {
                 // console.log('collision with ', this.char.health);
                 this.statusBar.setPercentage(this.char.health);
             }
-            this.fireball.forEach((castableObject) => {
+            this.castableObject.forEach((castableObject) => {
                 if (endboss.isColliding(castableObject)) {
                     endboss.hit(castableObject);
                     castableObject.hit(endboss);
@@ -95,8 +117,32 @@ class World {
                 potion.collect();
                 this.level.potion.splice(this.level.potion.indexOf(potion), 1);
                 this.manaBar.setPercentage(this.char.mana);
-                // this.increasePoints(900);
+                this.increasePoints(900);
             }
+        })
+    }
+
+    collisionSpellbooks() {
+        this.level.spellbook.forEach((spellbook) => {
+            if (this.char.isColliding(spellbook)) {
+                this.level.spellbook.splice(this.level.spellbook.indexOf(spellbook), 1);
+                this.increasePoints(10000);
+            }
+        })
+    }
+
+    increasePoints(n) {
+        this.points += +n;
+    }
+
+    updateScore() {
+        this.score = this.points;
+        this.score += this.elf.points;
+        this.level.orcs.forEach((orc) => {
+            this.score += orc.points;
+        })
+        this.level.endboss.forEach((endboss) => {
+            this.score += endboss.points;
         })
     }
 
@@ -116,8 +162,9 @@ class World {
         this.addToMap(this.char);
         this.addObjectsToMap(this.level.villain);
         this.addObjectsToMap(this.level.endboss);
-        this.addObjectsToMap(this.fireball);
+        this.addObjectsToMap(this.castableObject);
         this.addObjectsToMap(this.level.potion);
+        this.addObjectsToMap(this.level.spellbook);
         
         this.ctx.translate(-this.camera_x, 0);
 
@@ -136,7 +183,7 @@ class World {
             this.flipImage(mObj)
         }
         mObj.draw(this.ctx);
-        // mObj.drawFrame(this.ctx);
+        mObj.drawFrame(this.ctx);
         if (mObj.otherDirection) {
             this.flipImageBack(mObj);
         }

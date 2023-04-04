@@ -28,7 +28,7 @@ class DrawableObject {
     }
 
     drawFrame(ctx){
-        if (this instanceof character || this instanceof villain) {
+        if (this instanceof character || this instanceof villain || this instanceof Flash || this instanceof Fireball) {
             ctx.beginPath();
             ctx.lineWidth = '2';
             ctx.strokeStyle = "black";

@@ -67,6 +67,7 @@ class villain extends moveableObject{
                 clearInterval(animationInterval);
                 clearInterval(movingInterval);
                 this.die();
+                this.increasePoints(1500);
             } else 
                 this.objectAnimation(this.WALKING_IMAGES);
         },1000 / 30);

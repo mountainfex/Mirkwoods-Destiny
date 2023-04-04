@@ -64,32 +64,50 @@ class Endboss extends moveableObject{
     }
 
     animation(){
-        if (this.isDead()) {
-            this.objectAnimation(this.DEAD_IMAGES)
-        } else {
-            setInterval(() => {
+        const animationInterval = setInterval(() => {
+            if (this.isDead()) {
+                this.die();
+                this.increasePoints(25000);
+                clearInterval(animationInterval);
+
+            } else {
+
                 let moveInterval = setInterval(() => {
                     this.moveLeft();
-                },1000 / 60);
-                this.moveLeft();
+                }, 1000 / 60);
+
                 let animationWalkInterval = setInterval(() => {
-                    this.objectAnimation(this.WALKING_IMAGES);
-                }, 1000 / 30);
-                setTimeout(() => {
+                    if (this.isDead()) {
+                        this.die();
+                        this.increasePoints(25000);
+                        clearInterval(moveInterval);
+                        clearInterval(animationWalkInterval);
+                        clearInterval(animationInterval);
+                    } else {
+                        this.objectAnimation(this.WALKING_IMAGES);
+                    }
+                }, 1000 / 10)
+
+                    setTimeout(() => {
                     clearInterval(moveInterval);
                     clearInterval(animationWalkInterval);
+
                     let animationAttackInterval = setInterval(() => {
-                        this.objectAnimation(this.ATTACK_IMAGES);
+                        if (this.isDead()) {
+                            this.die();
+                            this.increasePoints(25000);
+                            clearInterval(animationAttackInterval);
+                            clearInterval(animationInterval);
+
+                        } else {
+                            this.objectAnimation(this.ATTACK_IMAGES);
+                        }
                     }, 1000 / 20);
-                    this.damage = 50;
-                    console.log(this.damage);
                     setTimeout(() => {
                         clearInterval(animationAttackInterval);
-                        this.damage = 5;
-                        console.log(this.damage);
                     }, 2000);
                 }, 4000);
-            }, 6000);
-        }
+            }
+        }, 6000);
     }
 }
