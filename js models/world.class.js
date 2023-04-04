@@ -13,6 +13,9 @@ class World {
     lastAttack = 0;
     endboss;
 
+    fireaudio = new Audio('audio/fireball.mp3');
+    flashaudio = new Audio('audio/flash.mp3');
+
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -44,6 +47,7 @@ class World {
         if (this.keyboard.ENTER && this.char.mana > 15 && !this.cooldown()) {
             let attack = new Fireball(this.char.x, this.char.y);
             this.castableObject.push(attack);
+            this.fireaudio.play();
             this.char.mana -= 20;
             this.manaBar.setPercentage(this.char.mana);
             this.lastAttack = new Date().getTime();
@@ -57,6 +61,7 @@ class World {
         if (this.keyboard.SHIFT && this.char.mana >= 5 && !this.cooldown()) {
             let attack = new Flash(this.char.x, this.char.y);
             this.castableObject.push(attack);
+            this.flashaudio.play();
             this.char.mana -= 5;
             this.manaBar.setPercentage(this.char.mana);
             this.lastAttack = new Date().getTime();
