@@ -6,6 +6,7 @@ class moveableObject extends DrawableObject{
     health = 100;
     lastHit = 0;
     lastDamage = 0;
+    points = 0;
 
     offset = {
         top: 0,
@@ -93,4 +94,9 @@ class moveableObject extends DrawableObject{
             clearInterval(animationInterval);
         }, 1000);
     }
+
+    increasePoints(n) {
+        this.points += +n;
+    }
+
 }

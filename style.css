@@ -55,8 +55,8 @@ header img {
 
 .score {
     font-size: 24px;
-    color: #e1a67d;
-    text-shadow: -2px 0 #7D4B07, 0 2px #7D4B07, 2px 0 #7D4B07, 0 -2px #7D4B07;
+    color: #D7CC8D;
+    text-shadow: -1px 0 #7D4B07, 0 1px #7D4B07, 1px 0 #7D4B07, 0 -1px #7D4B07;
     width: 45%;
     display: flex;
     gap: 10px;
@@ -76,6 +76,14 @@ header img {
     justify-content: flex-start;
     align-items: center;
 }
+
+.backdrop {
+    padding: 50px 0 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .logo {
     width: 1000px;
 }
@@ -83,8 +91,8 @@ header img {
 .gameLore {
     font-weight: 500;
     font-size: 24px;
-    color: #D7CC8D;
-    text-shadow: -1px 0 #7D4B07, 0 1px #7D4B07, 1px 0 #7D4B07, 0 -1px #7D4B07;
+    color: #C8C5AD;
+    text-shadow: -2px 0 #3F3C30, 0 2px #3F3C30, 2px 0 #3F3C30, 0 -2px #3F3C30;
     margin: 40px;
     text-align: center;
    
@@ -95,8 +103,8 @@ header img {
     width: 200px;
     height: 50px;
     border-radius: 20px;
-    background-color: #06230E;
-    border: 2px solid #031408;
+    background-color: #62721A;
+    border: 2px solid #272D05;
     color: #D7CC8D;
     text-shadow: -1px 0 #7D4B07, 0 1px #7D4B07, 1px 0 #7D4B07, 0 -1px #7D4B07;
     font-size: 30px;
@@ -104,8 +112,8 @@ header img {
 }
 
 .btn:hover {
-	background:linear-gradient(to bottom, #013b01 5%, #0e581d 100%);
-	background-color:#013b01;
+	background:linear-gradient(to bottom,  #65751c 5%, #343D0E 100%);
+	background-color:#2A320B;
 }
 .btn:active {
 	position:relative;

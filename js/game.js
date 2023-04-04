@@ -1,17 +1,18 @@
 let canvas;
 let world; 
 let keyboard = new Keyboard;
+let audio = new Audio ('audio/maintheme.mp3');
 
 function init(){
     canvas = document.getElementById('canvas');
-    world = new World(canvas, keyboard);
 }
 
 function startGame() {
     hideScreens();
-    // initLevel();
+    initLevel();
     world = new World(canvas, keyboard);
     runGame();
+    // audio.play();
 }
 
 function hideScreens() {
@@ -116,11 +117,11 @@ function checkGameOver(gameInterval) {
             document.getElementById('endscreenHeadline').innerHTML = 'GAME OVER';
         }, 1000);
     }
-    if (world.endbossEnergy == 0) {
+    if (world.level.endboss.health == 0) {
         clearInterval(gameInterval);
         setTimeout(() => {
             document.getElementById('endscreen').classList.remove('dnone');
-            document.getElementById('endscreenHeadline').innerHTML = `Victory`;
+            document.getElementById('endscreenHeadline').innerHTML = 'VICTORY';
         }, 1000);
     }
 }
