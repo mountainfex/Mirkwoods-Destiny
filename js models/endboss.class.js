@@ -5,6 +5,7 @@ class Endboss extends moveableObject{
     otherDirection = true;
     health = 20;
     damage = 5;
+    points = 25000;
 
     offset = {
         top: 200,
@@ -67,7 +68,7 @@ class Endboss extends moveableObject{
         const animationInterval = setInterval(() => {
             if (this.isDead()) {
                 this.die();
-                this.increasePoints(25000);
+                this.increasePoints(this.points);
                 clearInterval(animationInterval);
 
             } else {
@@ -79,7 +80,7 @@ class Endboss extends moveableObject{
                 let animationWalkInterval = setInterval(() => {
                     if (this.isDead()) {
                         this.die();
-                        this.increasePoints(25000);
+                        this.increasePoints(this.points);
                         clearInterval(moveInterval);
                         clearInterval(animationWalkInterval);
                         clearInterval(animationInterval);
@@ -95,7 +96,7 @@ class Endboss extends moveableObject{
                     let animationAttackInterval = setInterval(() => {
                         if (this.isDead()) {
                             this.die();
-                            this.increasePoints(25000);
+                            this.increasePoints(this.points);
                             clearInterval(animationAttackInterval);
                             clearInterval(animationInterval);
 

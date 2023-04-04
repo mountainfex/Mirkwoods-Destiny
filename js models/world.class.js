@@ -30,6 +30,8 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkCast();
+            this.updateScore();
+            this.checkEndbossHP()
         }, 100);
     }
 
@@ -74,6 +76,7 @@ class World {
         this.collisionVillain();
         this.collisionEndboss();
         this.collisionPotion();
+        this.collisionSpellbooks();
     }
 
     collisionVillain(){
@@ -137,12 +140,20 @@ class World {
 
     updateScore() {
         this.score = this.points;
-        this.score += this.elf.points;
-        this.level.orcs.forEach((orc) => {
-            this.score += orc.points;
+        this.score += this.char.points;
+        this.level.villain.forEach((villain) => {
+            this.score += villain.points;
+            
         })
         this.level.endboss.forEach((endboss) => {
             this.score += endboss.points;
+        })
+    }
+
+    checkEndbossHP() {
+        this.endbossHP = 0;
+        this.level.endboss.forEach((endboss) => {
+            this.endbossHP += endboss.health;
         })
     }
 
@@ -183,7 +194,7 @@ class World {
             this.flipImage(mObj)
         }
         mObj.draw(this.ctx);
-        mObj.drawFrame(this.ctx);
+        // mObj.drawFrame(this.ctx);
         if (mObj.otherDirection) {
             this.flipImageBack(mObj);
         }

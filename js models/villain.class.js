@@ -10,6 +10,8 @@ class villain extends moveableObject{
     health = 10;
     damage = 5;
 
+    points = 1500;
+
     offset = {
         top: 115,
         right: 210,
@@ -67,7 +69,7 @@ class villain extends moveableObject{
                 clearInterval(animationInterval);
                 clearInterval(movingInterval);
                 this.die();
-                this.increasePoints(1500);
+                this.increasePoints(this.points);
             } else 
                 this.objectAnimation(this.WALKING_IMAGES);
         },1000 / 30);

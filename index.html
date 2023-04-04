@@ -35,8 +35,39 @@
     <header>
             <img src="img\mirkwoods_logo.png" alt="">
     </header>
+    <div class="game">
+        <canvas id="canvas" width="720" height="480"></canvas>
 
-    <canvas id="canvas" width="720" height="480"></canvas>
+        <div class="menu">
+            <div class="score">
+                <span>Highscore:</span>
+                <span id="score">0000000</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="startscreen" id="startscreen">
+        <img class="logo" src="img\mirkwoods_logo.png" alt="">
+        <div class="gameLore">
+            <span>Once elves lived in droves in the trees of the Mirkwood Forest, gentle and pure in their countenance, tending their homeland for thousands of generations. <br>
+                Now a dark power rises in the east and casts its shadow menacingly over the treetops of the Forest. <br>
+                <br>
+                Night falls, drums in the impenetrable thicket of the undergrowth, clashing swords and clattering armor in the gloom. <br> 
+                The future of your ancestral home is in your hands, are you ready to fulfill your destiny?
+                
+            </span>
+        </div>
+        <button class="btn" id="startGame" onclick="startGame()">READY!</button>
+    </div>
+
+    <div class="endscreen dnone" id="endscreen">
+        <div class="endscreenContent">
+            <span id="endscreenHeadline"></span>
+            <button class="btn" id="startGame" onclick="startGame()">RESTART!</button>
+        </div>
+    </div>
+
+    
     
 </body>
 </html>
