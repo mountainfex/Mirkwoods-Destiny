@@ -1,10 +1,48 @@
 let canvas;
 let world; 
 let keyboard = new Keyboard;
-let audio = new Audio ('audio/maintheme.mp3');
+let gameAudio = new Audio ('audio/maintheme.mp3');
+let menuAudio = new Audio ('audio/Wardrums.mp3');
+let soundMuted = false;
 
 function init(){
     canvas = document.getElementById('canvas');
+}
+
+function continueGame(){
+    menuAudio.play();
+    document.getElementById('description').classList.remove('dnone');
+    document.getElementById('startMenu').classList.remove('dnone');
+    document.getElementById('continue').classList.add('dnone');
+}
+
+function soundMute() {
+    let soundIconMenu = document.getElementById('soundIconMenu');
+    let soundIconIngame = document.getElementById('soundIconIngame');
+    if (soundMuted) {
+        soundMuted = false;
+        soundIconMenu.src = 'img/icons/unmute.png';
+        soundIconIngame.src = 'img/icons/unmute.png';
+        gameAudio.muted = false;
+        menuAudio.muted = false;
+    } else {
+        soundMuted = true;
+        soundIconMenu.src = 'img/icons/mute.png';
+        soundIconIngame.src = 'img/icons/mute.png';
+        gameAudio.muted = true;
+        menuAudio.muted = true;
+    }
+    if (world) {
+        setWorldAudio();
+    }
+}
+
+function setWorldAudio() {
+    if (soundMuted) {
+        world.soundMuted = true;
+    } else {
+        world.soundMuted = false;
+    }
 }
 
 function startGame() {
@@ -12,7 +50,8 @@ function startGame() {
     initLevel();
     world = new World(canvas, keyboard);
     runGame();
-    // audio.play();
+    menuAudio.pause();
+    gameAudio.play();
 }
 
 function hideScreens() {
@@ -193,11 +232,38 @@ function checkGameOver(gameInterval) {
         }, 1000);
     }
 
-    if (world.level.endboss.health == 0) {
+    if (world.endboss.health == 0) {
         clearInterval(gameInterval);
         setTimeout(() => {
             document.getElementById('endscreen').classList.remove('dnone');
             document.getElementById('endscreenHeadline').innerHTML = 'VICTORY';
         }, 1000);
     }
+}
+
+function howToPlay() {
+    document.getElementById('description').innerHTML = createHowToPlay();
+}
+
+function createHowToPlay() {
+    return `
+    <div class="howToPlay">
+        <div class="walkRight">
+            Walk Right: D or<button class="btnSmall" id="btnRight"><img  class="arrowRight" src="img/icons/arrow-204-256.png" class="rotateRight imgSmall" alt=""></button>
+        </div>
+        <div class="walkLeft">
+            Walk Left: A or<button class="btnSmall" id="btnLeft"><img class="arrowLeft" src="img/icons/arrow-204-256.png" class="rotateLeft imgSmall" alt=""></button>
+        </div>
+        <div class="jump">
+            Jump: SPACE or<button class="btnSmall" id="btnJump"><img class="arrowUp" src="img/icons/arrow-204-256.png" class="imgSmall" alt=""></button>
+        </div>
+    </div>
+    <div class="howToPlay">
+        <div class="flash">
+            <img src="img/Flashcast/flash06.png" alt="">Flash (Requires 5 Mana): SHIFT
+        </div>
+        <div class="fire">
+            <img src="img/Firecast/22.png" alt="">Fireball (Requires 30 Mana): ENTER
+        </div>
+    </div>`
 }

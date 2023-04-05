@@ -4,14 +4,14 @@ function initLevel(){
     level1 = new Level(
         [
             new villain(),
-            new villain(),
-            new villain(),
-            new villain(),
-            new villain(),
-            new villain(),
-            new villain(),
-            new villain(),
-            new villain(),
+            // new villain(),
+            // new villain(),
+            // new villain(),
+            // new villain(),
+            // new villain(),
+            // new villain(),
+            // new villain(),
+            // new villain(),
         ],
     
         [      

@@ -23,7 +23,7 @@ body {
 
 canvas {
     background-color: black;
-    border: solid 2px white;
+    /* border: solid 2px white; */
     border-radius: 20px;
     -webkit-box-shadow: 0px 0px 22px 2px rgba(0,0,0,0.5); 
     box-shadow: 0px 0px 22px 2px rgba(0,0,0,0.5);
@@ -48,8 +48,9 @@ canvas {
 .menu {
     position: absolute;
     top: 5px;
-    right: 5px;
+    right: 10px;
     width: 720px;
+    gap: 10px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -61,7 +62,14 @@ canvas {
     text-shadow: -1px 0 #7D4B07, 0 1px #7D4B07, 1px 0 #7D4B07, 0 -1px #7D4B07;
     display: flex;
     gap: 10px;
+}
 
+.score span{
+    font-family: 'GrowlyGrin';
+}
+
+.sound img  {
+    width: 30px;
 }
 
 .mobileControllerLeft{
@@ -146,7 +154,7 @@ canvas {
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
 
@@ -162,13 +170,86 @@ canvas {
 }
 
 .gameLore {
+    display: flex;
+    justify-content: space-between;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 28px;
     color: #C8C5AD;
-    text-shadow: -2px 0 #3F3C30, 0 2px #3F3C30, 2px 0 #3F3C30, 0 -2px #3F3C30;
-    margin: 40px;
-    text-align: center;
-   
+    text-shadow: -1px 0 #3F3C30, 0 1px #3F3C30, 1px 0 #3F3C30, 0 -1px #3F3C30;
+    margin-bottom: 40px;
+    text-align: center;  
+}
+
+.gameLore span {
+    font-family: 'GrowlyGrin';
+}
+
+.howToPlay {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.walkRight {
+    font-family: 'GrowlyGrin';
+    font-size: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.walkLeft {
+    font-family: 'GrowlyGrin';
+    font-size: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.jump {
+    font-family: 'GrowlyGrin';
+    font-size: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.flash {
+    font-family: 'GrowlyGrin';
+    font-size: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.flash img {
+    width: 50px;
+}
+
+.fire {
+    font-family: 'GrowlyGrin';
+    font-size: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.fire img {
+    width: 50px;
+}
+
+.startMenu {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    width: 30px;
 }
 
 .btn {

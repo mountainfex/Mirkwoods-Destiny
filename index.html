@@ -43,6 +43,9 @@
                 <span>Highscore:</span>
                 <span id="score">0000000</span>
             </div>
+            <div class="sound">
+                <img src="img/icons/unmute.png" id="soundIconIngame" alt="" onclick="soundMute()">
+            </div>
         </div>
     </div>
 
@@ -68,14 +71,15 @@
             <img class="flashcastBtn" src="img/Flashcast/flash06.png" alt="">
         </button>
         <button class="btnSmall" id="btnRight">
-            <img class="firecastBtn" src="img/Firecast/30.png" alt="">
+            <img class="firecastBtn" src="img/Firecast/22.png" alt="">
         </button>
     </div>
 
     <div class="startscreen" id="startscreen">
         <div class="backdrop">
             <img class="logo" src="img\mirkwoods_logo_shadow.png" alt="">
-                <div class="gameLore">
+            <button class="btn" id="continue" onclick=" continueGame()">Into battle!</button>
+                <div class="gameLore dnone" id="description">
                     <span>Once elves lived in droves in the trees of the Mirkwoods, gentle and pure in their countenance, tending their homeland for thousands of generations. <br>
                         Now a dark power rises in the east and casts its shadow menacingly over the treetops of the Forest. <br>
                         <br>
@@ -83,7 +87,16 @@
                         The future of your ancestral home is in your hands, are you ready to fulfill your destiny?
                     </span>
                 </div>
-        <button class="btn" id="startGame" onclick="startGame()">READY!</button>
+        <div class="startMenu dnone" id="startMenu">
+            <button class="btnSmall" onclick="howToPlay()">
+                <img class="icon" src="img/icons/joystick-2-128.png" alt="">
+            </button>
+            <button class="btn" id="startGame" onclick="startGame()">READY!</button>
+            <button class="btnSmall">
+                <img class="icon" id="soundIconMenu" src="img/icons/unmute.png" alt="" onclick="soundMute()">
+            </button>
+        </div>
+        
         </div>
         
     </div>
