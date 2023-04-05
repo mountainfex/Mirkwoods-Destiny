@@ -232,7 +232,7 @@ function checkGameOver(gameInterval) {
         }, 1000);
     }
 
-    if (world.endboss.health == 0) {
+    if (world.level.endboss.health == 0) {
         clearInterval(gameInterval);
         setTimeout(() => {
             document.getElementById('endscreen').classList.remove('dnone');
