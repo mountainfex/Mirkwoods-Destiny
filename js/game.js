@@ -11,6 +11,8 @@ function init(){
 
 function continueGame(){
     menuAudio.play();
+    menuAudio.loop = true;
+    menuAudio.volume = 0.025;
     document.getElementById('description').classList.remove('dnone');
     document.getElementById('startMenu').classList.remove('dnone');
     document.getElementById('continue').classList.add('dnone');
@@ -52,6 +54,8 @@ function startGame() {
     runGame();
     menuAudio.pause();
     gameAudio.play();
+    gameAudio.loop = true;
+    gameAudio.volume = 0.05;
 }
 
 function hideScreens() {
@@ -232,7 +236,7 @@ function checkGameOver(gameInterval) {
         }, 1000);
     }
 
-    if (world.level.endboss.health == 0) {
+    if (world.level.endboss[0].health == 0) {
         clearInterval(gameInterval);
         setTimeout(() => {
             document.getElementById('endscreen').classList.remove('dnone');

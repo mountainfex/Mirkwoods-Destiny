@@ -175,9 +175,9 @@ class World {
         this.ctx.translate(this.camera_x, 0);
 
 
-        this.addToMap(this.char);
-        this.addObjectsToMap(this.level.villain);
         this.addObjectsToMap(this.level.endboss);
+        this.addObjectsToMap(this.level.villain);
+        this.addToMap(this.char);
         this.addObjectsToMap(this.castableObject);
         this.addObjectsToMap(this.level.potion);
         this.addObjectsToMap(this.level.spellbook);

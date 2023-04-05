@@ -93,7 +93,7 @@ class character extends moveableObject{
     }    
 
     animation(){
-        setInterval(() => {
+       let movingInterval = setInterval(() => {
             //moving character and turning img
             if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x){
                 this.moveRight();
@@ -116,6 +116,7 @@ class character extends moveableObject{
 
             if (this.isDead()) {
                 clearInterval(animationInterval);
+                clearInterval(movingInterval);
                 this.die();
             } else 
                 if (this.isHurt() && this.lastDamage != 0) {
