@@ -44,7 +44,7 @@ class World {
     }
 
     fireCast(){
-        if (this.keyboard.ENTER && this.char.mana > 15 && !this.cooldown()) {
+        if (this.keyboard.ENTER && this.char.mana > 15 && !this.cooldown() && this.char.health > 0) {
             let attack = new Fireball(this.char.x, this.char.y);
             this.castableObject.push(attack);
             this.fireaudio.play();
@@ -58,7 +58,7 @@ class World {
     }
 
     flashCast(){
-        if (this.keyboard.SHIFT && this.char.mana >= 5 && !this.cooldown()) {
+        if (this.keyboard.SHIFT && this.char.mana >= 5 && !this.cooldown() && this.char.health > 0) {
             let attack = new Flash(this.char.x, this.char.y);
             this.castableObject.push(attack);
             this.flashaudio.play();
