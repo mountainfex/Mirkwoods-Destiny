@@ -20,6 +20,77 @@ function hideScreens() {
     document.getElementById('endscreen').classList.add('dnone');
 }
 
+function mobileBtnEvents(){
+    document.getElementById('btnJump').addEventListener('touchstart', (e) => {
+        if (e.cancelable) {
+            e.preventDefault();
+            keyboard.SPACE = true;            
+        }
+    });
+    document.getElementById('btnJump').addEventListener('touchstart', (e) => {
+        if (e.cancelable) {
+            e.preventDefault();
+            keyboard.SPACE = false;            
+        }
+    });
+    document.getElementById("btnRight").addEventListener('touchstart', (e) => {
+        if (e.cancelable) {
+            e.preventDefault();
+            keyboard.RIGHT = true;
+        }
+
+    });
+    document.getElementById("btnRight").addEventListener('touchend', (e) => {
+        if (e.cancelable) {
+            e.preventDefault();
+            keyboard.RIGHT = false;
+        }
+
+    });
+    document.getElementById("btnLeft").addEventListener('touchstart', (e) => {
+        if (e.cancelable) {
+            e.preventDefault();
+            keyboard.LEFT = true;
+        }
+
+    });
+    document.getElementById("btnLeft").addEventListener('touchend', (e) => {
+        if (e.cancelable) {
+            e.preventDefault();
+            keyboard.LEFT = false;
+        }
+
+    });
+    document.getElementById("btnFlash").addEventListener('touchstart', (e) => {
+        if (e.cancelable) {
+            e.preventDefault();
+            keyboard.SHIFT = true;
+        }
+
+    });
+    document.getElementById("btnFlash").addEventListener('touchend', (e) => {
+        if (e.cancelable) {
+            e.preventDefault();
+            keyboard.SHIFT = false;
+        }
+
+    });
+    document.getElementById("btnFireball").addEventListener('touchstart', (e) => {
+        if (e.cancelable) {
+            e.preventDefault();
+            keyboard.ENTER = true;
+        }
+
+    });
+    document.getElementById("btnFireball").addEventListener('touchend', (e) => {
+        if (e.cancelable) {
+            e.preventDefault();
+            keyboard.ENTER = false;
+        }
+
+    });
+}
+
 window.addEventListener('keydown', (e) => {
     if(e.keyCode == 65){
         keyboard.LEFT = true;
@@ -40,9 +111,11 @@ window.addEventListener('keydown', (e) => {
     if(e.keyCode == 32){
         keyboard.SPACE = true;
     }
+
     if(e.keyCode == 13){
         keyboard.ENTER = true;
     }
+
     if(e.keyCode == 16){
         keyboard.SHIFT = true;
     }
@@ -68,9 +141,11 @@ window.addEventListener('keyup', (e) => {
     if(e.keyCode == 32){
         keyboard.SPACE = false;
     }
+
     if(e.keyCode == 13){
         keyboard.ENTER = false;
     }
+
     if(e.keyCode == 16){
         keyboard.SHIFT = false;
     }
@@ -117,6 +192,7 @@ function checkGameOver(gameInterval) {
             document.getElementById('endscreenHeadline').innerHTML = 'GAME OVER';
         }, 1000);
     }
+
     if (world.level.endboss.health == 0) {
         clearInterval(gameInterval);
         setTimeout(() => {
