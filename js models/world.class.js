@@ -48,7 +48,7 @@ class World {
             let attack = new Fireball(this.char.x, this.char.y);
             this.castableObject.push(attack);
             this.fireaudio.play();
-            this.char.mana -= 20;
+            this.char.mana -= 30;
             this.manaBar.setPercentage(this.char.mana);
             this.lastAttack = new Date().getTime();
             setTimeout(() => {

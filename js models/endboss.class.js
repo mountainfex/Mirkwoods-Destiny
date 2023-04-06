@@ -3,7 +3,7 @@ class Endboss extends moveableObject{
     height = 562.5;
     y = -135;
     otherDirection = true;
-    health = 20;
+    health = 70;
     damage = 5;
 
     offset = {

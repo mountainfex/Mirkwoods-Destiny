@@ -53,7 +53,7 @@ class Fireball extends castableObject {
 
 
     health = 10;
-    damage = 30;
+    damage = 20;
     
     constructor(x,y){
         super().loadImg('img/Firecast/1.png');

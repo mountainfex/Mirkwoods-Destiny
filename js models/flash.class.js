@@ -7,7 +7,7 @@ class Flash extends castableObject {
     };
 
     health = 1;
-    damage = 5;
+    damage = 10;
 
     IMAGES_FLASH = [
         'img/Flashcast/flash01.png',
