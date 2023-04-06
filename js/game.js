@@ -50,6 +50,7 @@ function setWorldAudio() {
 function startGame() {
     hideScreens();
     initLevel();
+    mobileBtnEvents()
     world = new World(canvas, keyboard);
     runGame();
     menuAudio.pause();
@@ -70,7 +71,7 @@ function mobileBtnEvents(){
             keyboard.SPACE = true;            
         }
     });
-    document.getElementById('btnJump').addEventListener('touchstart', (e) => {
+    document.getElementById('btnJump').addEventListener('touchend', (e) => {
         if (e.cancelable) {
             e.preventDefault();
             keyboard.SPACE = false;            
@@ -264,10 +265,10 @@ function createHowToPlay() {
     </div>
     <div class="howToPlay">
         <div class="flash">
-            <img src="img/Flashcast/flash06.png" alt="">Flash (Requires 5 Mana): SHIFT
+            <img src="img/Flashcast/flash06.png" alt="">Flash (Requires 5 Mana): <button class="playBtnSpace" id="btnRight">SHIFT</button>
         </div>
         <div class="fire">
-            <img src="img/Firecast/22.png" alt="">Fireball (Requires 30 Mana): ENTER
+            <img src="img/Firecast/22.png" alt="">Fireball (Requires 30 Mana): <button class="playBtnSpace" id="btnRight">ENTER</button>
         </div>
     </div>`
 }

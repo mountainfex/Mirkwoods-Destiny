@@ -348,13 +348,17 @@ canvas {
         font-size: 21px;
     }
     .logo {
-            width: 300px;
+        width: 300px;
     }
 
 }
 
 /* Smartphone */
 @media only screen and (max-width:1368px) {
+    .logo {
+        width: 90%;
+    }
+
     .mobileControllerLeft {
         display: flex;
     }
