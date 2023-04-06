@@ -87,7 +87,7 @@ class World {
     collisionVillain(){
         this.level.villain.forEach((villain) => {
             if (this.char.isColliding(villain)) {
-                console.log('collision with', villain);
+                // console.log('collision with', villain);
                 this.char.hit(villain);
                 // console.log('collision with ', this.char.health);
                 this.statusBar.setPercentage(this.char.health);
@@ -104,7 +104,7 @@ class World {
     collisionEndboss (){
         this.level.endboss.forEach((endboss) => {
             if (this.char.isColliding(endboss)) {
-                console.log('Endboss collision with', endboss);
+                // console.log('Endboss collision with', endboss);
                 this.char.hit(endboss);
                 // console.log('collision with ', this.char.health);
                 this.statusBar.setPercentage(this.char.health);

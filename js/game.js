@@ -253,13 +253,13 @@ function createHowToPlay() {
     return `
     <div class="howToPlay">
         <div class="walkRight">
-            Walk Right: D or<button class="btnSmall" id="btnRight"><img  class="arrowRight" src="img/icons/arrow-204-256.png" class="rotateRight imgSmall" alt=""></button>
+            Walk Right: <button class="playBtn" id="btnRight">D</button> or <button class="playBtn" id="btnRight"><img  class="arrowRight" src="img/icons/arrow-204-256.png" class="rotateRight imgSmall" alt=""></button>
         </div>
         <div class="walkLeft">
-            Walk Left: A or<button class="btnSmall" id="btnLeft"><img class="arrowLeft" src="img/icons/arrow-204-256.png" class="rotateLeft imgSmall" alt=""></button>
+            Walk Left: <button class="playBtn" id="btnRight">A</button> or <button class="playBtn" id="btnLeft"><img class="arrowLeft" src="img/icons/arrow-204-256.png" class="rotateLeft imgSmall" alt=""></button>
         </div>
         <div class="jump">
-            Jump: SPACE or<button class="btnSmall" id="btnJump"><img class="arrowUp" src="img/icons/arrow-204-256.png" class="imgSmall" alt=""></button>
+            Jump: <button class="playBtnSpace" id="btnRight">SPACE</button> or <button class="playBtn" id="btnJump"><img class="arrowUp" src="img/icons/arrow-204-256.png" class="imgSmall" alt=""></button>
         </div>
     </div>
     <div class="howToPlay">

@@ -191,6 +191,36 @@ canvas {
     gap: 30px;
 }
 
+.playBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #62721A;
+    border: 2px solid #272D05;
+    font-family: 'GrowlyGrin';
+    color: #D7CC8D;
+    text-shadow: -1px 0 #7D4B07, 0 1px #7D4B07, 1px 0 #7D4B07, 0 -1px #7D4B07;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playBtnSpace {
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #62721A;
+    border: 2px solid #272D05;
+    font-family: 'GrowlyGrin';
+    color: #D7CC8D;
+    text-shadow: -1px 0 #7D4B07, 0 1px #7D4B07, 1px 0 #7D4B07, 0 -1px #7D4B07;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .walkRight {
     font-family: 'GrowlyGrin';
     font-size: 38px;
