@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'GrowlyGrin';
+    src: url(font/GrowlyGrin.ttf);
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(img/background/game_background_2/game_background_2.png);
+    background-repeat: no-repeat;
+}
+
+*{
+    font-family: 'GrowlyGrin';
+}
+
+.impressum {
+    padding: 20px;
+    font-size: 23px;
+    letter-spacing: 1px;
+    color: #D7CC8D;
+    text-shadow: -1px 0 #7D4B07, 0 1px #7D4B07, 1px 0 #7D4B07, 0 -1px #7D4B07;
+}

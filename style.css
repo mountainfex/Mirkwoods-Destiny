@@ -341,6 +341,38 @@ canvas {
     display: none !important;
 }
 
+.imprintSec {
+    position: absolute;
+    z-index: 999;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #DCD095;
+}
+
+.imprint {
+    font-family: 'GrowlyGrin';
+    color: #DCD095;
+    padding-right: 5px;
+}
+
+.imprint:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+a {
+    text-decoration: none;
+}
+
+.copyright {
+    font-family: 'GrowlyGrin';
+}
+
 
 /* Responsive */
 @media (max-width: 500px) {

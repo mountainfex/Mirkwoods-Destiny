@@ -101,8 +101,7 @@ class character extends moveableObject{
             if(this.world.keyboard.LEFT && this.x > 0){
                 this.moveLeft();
                 this.otherDirection = true;
-            } 
-
+            }
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
             
@@ -118,19 +117,15 @@ class character extends moveableObject{
                 clearInterval(animationInterval);
                 clearInterval(movingInterval);
                 this.die();
-            } else 
-                if (this.isHurt() && this.lastDamage != 0) {
-                    this.objectAnimation(this.HURT_IMAGES);
-                } else 
-                    if (this.isAboveGround()) {
-                        this.objectAnimation(this.JUMPING_IMAGES);
-                    } else {
-                        if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
-                            //walking animation
-                            this.objectAnimation(this.RUNNING_IMAGES);
-                        }
-                    }
-            },1000 / 30);
+            } else if (this.isHurt() && this.lastDamage != 0) {
+                this.objectAnimation(this.HURT_IMAGES);
+            } else if (this.isAboveGround()) {
+                this.objectAnimation(this.JUMPING_IMAGES);
+            } else {if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
+                this.objectAnimation(this.RUNNING_IMAGES);
+                }
+            }
+         },1000 / 30);
     };
 
     collect(mana) {
